@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
@@ -26,41 +27,32 @@ const LoginPage = () => {
         }
 
     return (
-        <div className="card">
-
-            <div className="card-header">
-                Login
+        <div className="login template d-flex justify-content-center align-items-center 100-w 100-vh bg-primary">
+            <div className='40-w p-5 rounded bg-white'>
+                <form>
+                    <h3>Login</h3>
+                <div className='mb-2'>
+                <label htmlFor="email">Email</label>
+                    <input type="email" placeholder="Coloque seu Email" className='form-control'></input>
+                </div>
+                <div className='mb-2'>
+                    <label htmlFor="password">Senha</label>
+                    <input type="password" placeholder="Coloque sua senha" className='form-control'></input>
+                </div>
+                <div className='mb-2'>
+                    <input type='checkbox' className='custom-control custom-checkbox' id="check"></input>
+                    <label htmlFor="check" className='custom-input-label ms-2'>
+                        Lembrar de mim
+                    </label>
+                </div>
+                <div className='d-grid'>
+                    <button className='btn btn-primary'>Entrar</button>
+                </div>
+                <p className='text-end mt-2'>
+                    Esqueceu <a href="">sua senha?</a><Link to="/cadastro" className='ms-2'>Ainda não tem o cadastro?</Link>
+                </p>
+                </form>
             </div>
-            <div className="card-body">
-                {error && <Alert variant="danger">{error}</Alert>}
-                {success && <Alert variant="success">{success}</Alert>}
-                <Form onSubmit={handleSubmit}>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Email</Form.Label>
-                        <Form.Control
-                            type="email"
-                            placeholder="Email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                    </Form.Group>
-
-                    <Form.Group controlId="formBasicPassword">
-                        <Form.Label>Senha</Form.Label>
-                        <Form.Control
-                            type="password"
-                            placeholder="Senha"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                    </Form.Group>
-
-                    <Button variant="primary" type="submit" className="mt-2">
-                        Entrar
-                    </Button>
-                </Form>
-            </div>
-
         </div>
     );
 };

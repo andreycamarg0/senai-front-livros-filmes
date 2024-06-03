@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
+import { Link } from 'react-router-dom';
 
 function CadastroPage() {
   const [validated, setValidated] = useState(false);
@@ -19,70 +20,35 @@ function CadastroPage() {
   };
 
   return (
-    <Form noValidate validated={validated} onSubmit={handleSubmit}>
-      <Row className="mb-3">
-        <Form.Group as={Col} md="4" controlId="validationCustom01">
-          <Form.Label>Nome</Form.Label>
-          <Form.Control
-            required
-            type="text"
-            placeholder="Nome"
-            defaultValue="Andrey"
-          />
-          <Form.Control.Feedback> Muito Bom!!</Form.Control.Feedback>
-        </Form.Group>
-        <Form.Group as={Col} md="4" controlId="validationCustom02">
-          <Form.Label>Sobrenome</Form.Label>
-          <Form.Control
-            required
-            type="text"
-            placeholder="Sobrenome"
-            defaultValue="Camargo"
-          />
-          <Form.Control.Feedback>Perfeito!</Form.Control.Feedback>
-        </Form.Group>
-        <Form.Group as={Col} md="4" controlId="validationCustomUsername">
-          <Form.Label>Apelido</Form.Label>
-          <InputGroup hasValidation>
-            <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
-            <Form.Control
-              type="text"
-              placeholder="Apelido"
-              aria-describedby="inputGroupPrepend"
-              required
-            />
-            <Form.Control.Feedback type="invalid">
-              Por Favor escolha um apelido.
-            </Form.Control.Feedback>
-          </InputGroup>
-        </Form.Group>
-      </Row>
-      <Row className="mb-3">
-        <Form.Group as={Col} md="6" controlId="validationCustom03">
-          <Form.Label>Senha</Form.Label>
-          <Form.Control type="text" placeholder="*****" required />
-          <Form.Control.Feedback type="invalido">
-            Por favor coloque uma senha valida.
-          </Form.Control.Feedback>
-        </Form.Group>
-        <Form.Group as={Col} md="3" controlId="validationCustom04">
-          <Form.Label>Confirme sua senha</Form.Label>
-          <Form.Control type="text" placeholder="****" required />
-          <Form.Control.Feedback type="invalido">
-            Por favor coloque a mesma senha digitada antes.
-          </Form.Control.Feedback>
-        </Form.Group>
-      </Row>
-      <Form.Group className="mb-3">
-        <Form.Check
-          required
-          label="Leia e concorde com os termos e condições!!"
-          feedback="Você deve concordar antes de enviar."
-          feedbackType="invalido"
-        />
-      </Form.Group>
-      <Button type="submit">Cadastrar</Button>
-    </Form>
+    <div className="cadastro template d-flex justify-content-center align-items-center 100-w 100-vh bg-primary">
+            <div className='40-w p-5 rounded bg-white'>
+                <form>
+                    <h3>Cadastro</h3>
+                    <div className='mb-2'>
+                <label htmlFor="fname">Primeiro Nome</label>
+                    <input type="text" placeholder="Coloque seu nome" className='form-control'></input>
+                </div>
+                    <div className='mb-2'>
+                <label htmlFor="lname">Ultimo Nome</label>
+                    <input type="text" placeholder="Coloque seu sobrenome" className='form-control'></input>
+                </div>
+                <div className='mb-2'>
+                <label htmlFor="email">Email</label>
+                    <input type="email" placeholder="Coloque seu Email" className='form-control'></input>
+                </div>
+                <div className='mb-2'>
+                    <label htmlFor="password">Senha</label>
+                    <input type="password" placeholder="Coloque sua senha" className='form-control'></input>
+                </div>
+                <div className='d-grid'>
+                    <button className='btn btn-primary'>Cadastrar</button>
+                </div>
+                <p className='text-end mt-2'>
+                  <Link to="/login" className='ms-2'>Ja tem o cadastro?</Link>
+                </p>
+                </form>
+            </div>
+        </div>
   );
 }
 
