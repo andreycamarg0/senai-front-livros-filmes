@@ -1,26 +1,33 @@
 import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
-import Row from 'react-bootstrap/Row';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import email from 'react'
 
-function CadastroPage() {
-  const [validated, setValidated] = useState(false);
+const CadastroPage = () => {
+  const [cadastro, setCadastro] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
 
-  const handleSubmit = (event) => {
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
+  async function handleSubmit(e){
+      e.preventDefault();
 
-    setValidated(true);
-  };
+      let response = await axios.post('http://143.198.156.185/api/auth/register', {
+          "email": email,
+          "password": password
+      }).then(function (value) {
+          setSuccess(`Cadastro realizado, ${value.data.user.name}!`);
+          setError(null);
+        })
+        .catch(function (value) {
+          console.log(value);
+          setError(value.response.data.error);
+          setSuccess(null);
+        });
+      }
 
   return (
-    <div className="cadastro template d-flex justify-content-center align-items-center 100-w 100-vh bg-primary">
+    <div className="cadastro template d-flex justify-content-center align-items-center 100-w 100-vh bg-black">
             <div className='40-w p-5 rounded bg-white'>
                 <form>
                     <h3>Cadastro</h3>

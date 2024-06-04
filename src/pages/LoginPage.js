@@ -27,7 +27,7 @@ const LoginPage = () => {
         }
 
     return (
-        <div className="login template d-flex justify-content-center align-items-center 100-w 100-vh bg-primary">
+        <div className="login template d-flex justify-content-center align-items-center 100-w 100-vh bg-black">
             <div className='40-w p-5 rounded bg-white'>
                 <form>
                     <h3>Login</h3>

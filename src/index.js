@@ -12,6 +12,9 @@ import {Container} from "react-bootstrap";
 import NavBarComponent from "./components/NavBarComponent";
 import HomePage from './pages/HomePage';
 import CadastroPage from './pages/CadastroPage';
+import FilmePage from './pages/FilmePage';
+import LivroPage from './pages/LivroPage';
+import './App.css';
 
 const router = createBrowserRouter([
     {
@@ -25,6 +28,14 @@ const router = createBrowserRouter([
     {
         path: "/cadastro",
         element: <CadastroPage />,
+    },
+    {
+        path: "/livros",
+        element: <LivroPage />,
+    },
+    {
+        path: "/filmes",
+        element: <FilmePage />,
     }
 ]);
 
