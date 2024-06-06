@@ -15,6 +15,8 @@ import CadastroPage from './pages/CadastroPage';
 import FilmePage from './pages/FilmePage';
 import LivroPage from './pages/LivroPage';
 import './App.css';
+import LivrosPage from './pages/LivrosPage';
+import FilmesPage from './pages/FilmesPage';
 
 const router = createBrowserRouter([
     {
@@ -31,12 +33,21 @@ const router = createBrowserRouter([
     },
     {
         path: "/livros",
-        element: <LivroPage />,
+        element: <LivrosPage />,
     },
     {
         path: "/filmes",
+        element: <FilmesPage />,
+    },
+    {
+        path: "/filme/:id",
         element: <FilmePage />,
-    }
+    },
+    {
+        path: "/livro/:id",
+        element: <LivroPage />,
+    }    
+
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
